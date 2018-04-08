@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
+
+<script>
+  AFRAME.registerComponent('auto-enter-vr', {
+  init: function () {
+    this.el.sceneEl.enterVR();
+  }
+});
+</script> 
+
   <head>
     <meta charset="utf-8">
     <title>Shopping</title>
