@@ -14,6 +14,14 @@
   }
 });
 </script>		
+
+  <script type="text/javascript">
+  var scene = document.querySelector('a-scene');
+  scene.addEventListener('enter-vr', (event) => {
+    window.scrollTop = 0;
+  });
+  </script>
+
 <script>
 /* registers hlink as hyperlink (experimental) change */
   AFRAME.registerComponent('hlink', {
