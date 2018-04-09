@@ -2,6 +2,7 @@
 <html>
 <head>
 <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
 <script>
   AFRAME.registerComponent('auto-enter-vr', {
   init: function () {
@@ -9,18 +10,13 @@
   }
 });
 </script>  
-</head>      
-  
+</head>    
+<a-scene auto-enter-vr="true">  
+  <a-entity id="environment" environment="preset:starry; lightPosition: 0.0 0.8 2.250; ground:canyon; groundYScale:25; playArea:1; fog:0.500; flatShading:true; grid:dots; gridColor:#FFF" suntime="from: 0 1 0; to: 1 0 0; duration: 50000">
   <body>
-    <a-scene auto-enter-vr="true">
-<a-curvedimage geometry="height: 1.08; primitive: cylinder; radius: 7.61; segmentsRadial: 46; thetaLength: 20; openEnded: true" id="suardalan-text" src="#suardalan" radius="5.7" theta-length="36" height="1"
-                     position="0 5.4 0" rotation="0 44.4 0" opacity="0.4" hlink="http://cablecenter.org">
-                      <a-animation begin="mouseenter"  attribute="opacity"  dur="550" fill="from" from="0.4" to="1"></a-animation>
-                      <a-animation begin="mouseleave"  attribute="opacity"  dur="550" fill="from" from="1" to="0.4"> </a-animation>
-                      <a-animation attribute="scale" begin="mouseenter" dur="500" to="1.1 1.1 1"></a-animation>
-            <a-animation attribute="scale" begin="mouseleave" dur="500" to="1 1 1"></a-animation>
-                        
-    </a-curvedimage>
+    
+      <box></box>
+      </a-entity>
   </a-scene>
   </body>
 
