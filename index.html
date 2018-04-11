@@ -1,10 +1,11 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<!-- main framework link -->
+		<!-- main framework library -->
 		<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-		<!-- environment link --> 
+		<!-- environment component --> 
 		<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+		<!-- gamepad controller component -->
 		<script src="dist/aframe-gamepad-controls.js"></script>
 
 <script>
@@ -14,16 +15,8 @@
   }
 });
 </script>		
-
-  <script type="text/javascript">
-  var scene = document.querySelector('a-scene');
-  scene.addEventListener('enter-vr', (event) => {
-    window.scrollTop = 0;
-  });
-  </script>
-
 <script>
-/* registers hlink as hyperlink (experimental) change */
+/* registers hlink as hyperlink (experimental) */
   AFRAME.registerComponent('hlink', {
   schema: {default: ''},
 
@@ -58,6 +51,10 @@
     this.el.setAttribute('environment', {lightPosition: {x: p.x, y: p.y, z: p.z}});
   }
 });
+
+  el.addEventListener('gamepadbuttondown', function (e) {
+  console.log('Button "%d" has been pressed.', e.index);
+});
 </script>
 
 	</head>
@@ -74,16 +71,25 @@
 				<img id="linkFrame" src="img/graphicFrame.png">
 
 			</a-assets>
+
+		<!--
+        Camera + Gamepad controls
+        Button 0 is "A" on an Xbox controller.
+      -->
+
+
+
+      
 	<!-- Camera, pointer & back button --> 
-	<a-entity id="camera-and-pointer" position="0 3 0" rotation="0 -143 0">
+	<a-entity gamepad-controls="flyEnabled: true" id="camera-and-pointer" position="0 3 0" rotation="0 -143 0" sound="src: url(assets/321103__nsstudios__blip1.wav);
+                       on: gamepadbuttondown:14">
 		<a-camera fov="70">
-    		<a-cursor ></a-cursor>
-    			<!-- unmovable page back button -->
-    		  <a-entity geometry="primitive: plane; height: 0.08; width: 0.1" position="0.82 -0.45 -1"
-            material="color: black; opacity: 0.2"></a-entity>
+    		<a-cursor cursor="downEvents: gamepadbuttondown:1"></a-cursor>
+
   		</a-camera>
   	</a-entity>
-<!--environment setup -->  	
+<!--environment setup -->
+  	
  <a-entity id="environment" environment="preset:starry; lightPosition: 0.0 0.8 2.250; ground:canyon; groundYScale:25; playArea:1; fog:0.500; flatShading:true; grid:dots; gridColor:#FFF" suntime="from: 0 1 0; to: 1 0 0; duration: 50000"></a-entity>
 <!-- White round background wallpaper -->
       <a-entity>
@@ -119,12 +125,13 @@
 		</a-curvedimage>
 
 <a-curvedimage geometry="height: 1.8; primitive: cylinder; radius: 7.61; segmentsRadial: 46; thetaLength: 27; openEnded: true" id="suardalan-map-link" src="#linkFrame" radius="5.7" theta-length="36" height="1"
-                     position="0 1.6 0" rotation="0 4.6 0" opacity="0.4" hlink="index.html">
+                     position="0 1.6 0" rotation="0 4.6 0" opacity="0.4" hlink="suardalan_3dmap.html; on: gamepadbuttondown:1">
 	                  <a-animation begin="mouseenter"  attribute="opacity"  dur="1000" fill="from" from="0.4" to="1"></a-animation>
                       <a-animation begin="mouseleave"  attribute="opacity"  dur="1000" fill="from" from="1" to="0.4"> </a-animation>
                       <a-animation attribute="scale" begin="mouseenter" dur="1000" to="1.1 1.1 1"></a-animation>
  					  <a-animation attribute="scale" begin="mouseleave" dur="1000" to="1 1 1"></a-animation>
 		</a-curvedimage>	
+
 <a-curvedimage geometry="height: 1.8; primitive: cylinder; radius: 7.61; segmentsRadial: 46; thetaLength: 27; openEnded: true" id="suardalan-map-link" src="#linkFrame" radius="5.7" theta-length="36" height="1"
                      position="0 3.8 0" rotation="0 4.6 0" opacity="0.4">
 	                  <a-animation begin="mouseenter"  attribute="opacity"  dur="1000" fill="from" from="0.4" to="1"></a-animation>

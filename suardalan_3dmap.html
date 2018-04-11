@@ -1,23 +1,16 @@
-<!DOCTYPE>
 <html>
-<head>
-<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
-<script>
-  AFRAME.registerComponent('auto-enter-vr', {
-  init: function () {
-    this.el.sceneEl.enterVR();
-  }
-});
-</script>  
-</head>    
-<a-scene auto-enter-vr="true">  
-  <a-entity id="environment" environment="preset:starry; lightPosition: 0.0 0.8 2.250; ground:canyon; groundYScale:25; playArea:1; fog:0.500; flatShading:true; grid:dots; gridColor:#FFF" suntime="from: 0 1 0; to: 1 0 0; duration: 50000">
+  <head>
+    <!-- A-Frame Library -->
+    <script src="https://aframe.io/releases/0.3.1/aframe.min.js"></script> 
+ 
+    <!-- Component -->
+    <script src="dist/aframe-gamepad-controls.js"></script> 
+  </head>
   <body>
-    
-      <box></box>
-      </a-entity>
-  </a-scene>
+    <a-scene>
+      <!-- ... -->
+      <a-entity camera gamepad-controls></a-entity>
+      <a-box></a-box>
+    </a-scene>
   </body>
-
 </html>
