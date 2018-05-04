@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta name="description" content="A-Frame href">
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="dist/aframe-gamepad-controls.js"></script>
+<script src="https://unpkg.com/aframe-fps-look-controls-component/dist/aframe-fps-look-controls-component.min.js"></script>
+<script>          /* event listener that will go back one page, if gamebutton 1 is triggered*/
+          addEventListener('gamepadbuttondown:1', function () {
+          window.history.back();
+          });</script>
+                      <script>
+  AFRAME.registerComponent('auto-enter-vr', {
+  init: function () {
+    this.el.sceneEl.enterVR();
+  }
+});
+</script>
+</head>
+
+<body>
+<a-scene auto-enter-vr="true"  background="color: #ECECEC" environment="preset:starry; lightPosition: 0.0 0.8 2.250; ground:canyon; groundYScale:25; playArea:1; fog:0.500; flatShading:true; grid:dots; gridColor:#FFF" stats>
+    <a-assets>
+      <a-sky src="#sky"></a-sky>
+<a-asset-item id="callater" src="img/callaterMap3.dae"></a-asset-item>
+<img id="sky" src="img/sky.jpg">
+  </a-assets>
+    <a-sky src="#sky"></a-sky>
+
+<a-camera position="6.7 3.7 19" fps-look-controls wasd-controls>
+ 
+</a-camera>
+
+  
+<a-light type="ambient" color="#fff"></a-light>
+
+
+      <a-entity id="map" position="0 -33.6 -3">
+        <a-collada-model position="-.35 0 .55" rotation="0 -20 0" scale="0.18 0.18 0.18"
+                         src="#callater"></a-collada-model>
+      </a-entity>
+
+</a-box>
+</a-entity>
+
+ </a-scene>
+
+</body>
+</html>
